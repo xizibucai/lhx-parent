@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.Gallery;
 import com.lhx.dm.user.entity.Image;
-import com.lhx.dm.user.entity.vo.GalleryPublishVo;
-import com.lhx.dm.user.entity.vo.GalleryVo;
+import com.lhx.dm.user.vo.GalleryPublishVo;
+import com.lhx.dm.user.vo.GalleryVo;
 import com.lhx.dm.user.mapper.GalleryMapper;
 import com.lhx.dm.user.service.GalleryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -97,7 +97,8 @@ public class GalleryServiceImpl extends ServiceImpl<GalleryMapper, Gallery> impl
         QueryWrapper<Image> wrapperImage = new QueryWrapper<>();
         wrapperImage.eq("gallery_id",id);
         List<Image> list = imageService.list(wrapperImage);
-        return R.ok().data("list",list);
+        Gallery gallery = getById(id);
+        return R.ok().data("list",list).data("gallery",gallery);
     }
 
     @Override

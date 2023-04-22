@@ -3,7 +3,7 @@ package com.lhx.dm.user.service;
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.Video;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhx.dm.user.entity.query.VideoQuery;
+import com.lhx.dm.user.query.VideoQuery;
 
 /**
  * <p>

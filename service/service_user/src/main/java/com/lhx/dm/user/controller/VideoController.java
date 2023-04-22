@@ -2,7 +2,7 @@ package com.lhx.dm.user.controller;
 
 
 import com.lhx.db.result.R;
-import com.lhx.dm.user.entity.query.VideoQuery;
+import com.lhx.dm.user.query.VideoQuery;
 import com.lhx.dm.user.service.VideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -3,8 +3,8 @@ package com.lhx.dm.user.controller;
 
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.VideosSet;
-import com.lhx.dm.user.entity.query.VideoSetFrontQuery;
-import com.lhx.dm.user.entity.query.VideoSumQuery;
+import com.lhx.dm.user.query.VideoSetFrontQuery;
+import com.lhx.dm.user.query.VideoSumQuery;
 import com.lhx.dm.user.service.VideosSetService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -89,6 +89,12 @@ public class VideosSetController {
     @PostMapping("videoSetGetFrontList/{pageNo}/{pageSize}")
     public R videoSetGetFrontList(@PathVariable Long pageSize, @PathVariable Long pageNo,  @RequestBody VideoSetFrontQuery videoSetFrontQuery){
        return videosSetService.videoSetGetFrontList(pageNo,pageSize,videoSetFrontQuery);
+    }
+
+    @ApiOperation("影集id查视频列表")
+    @GetMapping("videoGetBysetId/{id}")
+    public R videoGetBysetId(@PathVariable("id") Integer id){
+        return videosSetService.videoGetBysetId(id);
     }
 
 

@@ -121,4 +121,6 @@ public class Video implements Serializable {
      * 封面
      */
     private String image;
+    @TableField("intro")
+    private String intro;
 }

@@ -6,11 +6,12 @@ import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.Video;
 import com.lhx.dm.user.entity.VideosClass;
 import com.lhx.dm.user.entity.VideosSet;
-import com.lhx.dm.user.entity.query.VideoSetFrontQuery;
-import com.lhx.dm.user.entity.query.VideoSumQuery;
-import com.lhx.dm.user.entity.vo.VideoSetBaseVo;
-import com.lhx.dm.user.entity.vo.VideoSetPublishVo;
-import com.lhx.dm.user.entity.vo.video.VideoSetFrontVo;
+import com.lhx.dm.user.query.VideoSetFrontQuery;
+import com.lhx.dm.user.query.VideoSumQuery;
+import com.lhx.dm.user.vo.VideoSetBaseVo;
+import com.lhx.dm.user.vo.VideoSetPublishVo;
+import com.lhx.dm.user.vo.uservo.UserUploadVideoVo;
+import com.lhx.dm.user.vo.video.VideoSetFrontVo;
 import com.lhx.dm.user.mapper.VideosSetMapper;
 import com.lhx.dm.user.service.VideoService;
 import com.lhx.dm.user.service.VideosClassService;
@@ -44,7 +45,7 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
     @Override
     public R videosSetAdd(VideosSet videosSet) {
         save(videosSet);
-        return R.ok().data("id",videosSet.getId());
+        return R.ok().data("id", videosSet.getId());
     }
 
     @Override
@@ -56,13 +57,13 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
     @Override
     public R videosSetUpdate(VideosSet videosSet) {
         updateById(videosSet);
-        return R.ok().data("id",videosSet.getId());
+        return R.ok().data("id", videosSet.getId());
     }
 
     @Override
     public R videosSetList() {
         List<VideosSet> list = list();
-        return R.ok().data("list",list);
+        return R.ok().data("list", list);
     }
 
     @Override
@@ -75,16 +76,16 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
         Integer videosClassId = videosSet.getVideosClassId();
         QueryWrapper<VideosSet> queryWrapper = new QueryWrapper<>();
         if (!StringUtils.isEmpty(kind)) {
-            queryWrapper.eq("kind",kind);
+            queryWrapper.eq("kind", kind);
         }
         if (!StringUtils.isEmpty(states)) {
-            queryWrapper.eq("states",states);
+            queryWrapper.eq("states", states);
         }
         if (!StringUtils.isEmpty(videosClassId)) {
-            queryWrapper.eq("videos_class_id",videosClassId);
+            queryWrapper.eq("videos_class_id", videosClassId);
         }
         if (!StringUtils.isEmpty(title)) {
-            queryWrapper.like("title",title);
+            queryWrapper.like("title", title);
         }
         if (!StringUtils.isEmpty(begin)) {
             queryWrapper.ge("create_time", begin);
@@ -93,10 +94,10 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
             queryWrapper.le("update_time", end);
         }
         Page<VideosSet> page = new Page<>(pageNo, pageSize);
-        baseMapper.selectPage(page,queryWrapper);
+        baseMapper.selectPage(page, queryWrapper);
         long total = page.getTotal();
         List<VideosSet> records = page.getRecords();
-        return R.ok().data("total",total).data("list",records);
+        return R.ok().data("total", total).data("list", records);
 
     }
 
@@ -113,7 +114,7 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
         VideosSet set = getById(id);
 
         QueryWrapper<Video> wrapperVideo = new QueryWrapper<>();
-        wrapperVideo.eq("vides_set_id",id);
+        wrapperVideo.eq("vides_set_id", id);
         List<Video> videoList = videoService.list(wrapperVideo);
 
         VideoSetPublishVo vo = new VideoSetPublishVo();
@@ -128,7 +129,7 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
         VideosClass videosClass = videosClassService.getById(set.getId());
         String title = videosClass.getTitle();
         vo.setVideosClass(title);
-        return R.ok().data("vo",vo);
+        return R.ok().data("vo", vo);
     }
 
     @Override
@@ -142,7 +143,7 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
             vo.setCover(videosSet.getImage());
             vos.add(vo);
         }
-        return R.ok().data("collection",vos);
+        return R.ok().data("collection", vos);
     }
 
     @Override
@@ -150,19 +151,19 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
         String yearQuery = videoSetFrontQuery.getYear();
         Integer videoClass = videoSetFrontQuery.getVideoClass();
         QueryWrapper<VideosSet> wrapper = new QueryWrapper<>();
-        if (!StringUtils.isEmpty(videoClass)){
-            wrapper.eq("videos_class_id",videoClass);
+        if (!StringUtils.isEmpty(videoClass)) {
+            wrapper.eq("videos_class_id", videoClass);
         }
-        if (!StringUtils.isEmpty(yearQuery)){
-            wrapper.like("first_time",yearQuery);
+        if (!StringUtils.isEmpty(yearQuery)) {
+            wrapper.like("first_time", yearQuery);
         }
         Page<VideosSet> page = new Page<>(pageNo, pageSize);
-        baseMapper.selectPage(page,wrapper);
+        baseMapper.selectPage(page, wrapper);
         long total = page.getTotal();
         //获取影集信息
         List<VideosSet> videosSetList = page.getRecords();
-        if (videosSetList.size()<=0) {
-            return R.ok().data("voList",null).data("total",total).message("没有搜索到结果");
+        if (videosSetList.size() <= 0) {
+            return R.ok().data("voList", null).data("total", total).message("没有搜索到结果");
         }
         //封装数据集合
         ArrayList<VideoSetFrontVo> voList = new ArrayList<>();
@@ -175,7 +176,7 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
             VideoSetFrontVo vo = new VideoSetFrontVo();
             //封装分类
             for (VideosClass videosClass : classList) {
-                if (videosClass.getId().equals(videosSet.getId())){
+                if (videosClass.getId().equals(videosSet.getId())) {
                     vo.setVideoSetClass(videosClass.getTitle());
                     break;
                 }
@@ -199,12 +200,48 @@ public class VideosSetServiceImpl extends ServiceImpl<VideosSetMapper, VideosSet
             vo.setCreateName(videosSet.getCreateName());
             voList.add(vo);
         }
-        return R.ok().data("voList",voList).data("total",total);
+        return R.ok().data("voList", voList).data("total", total);
 
 
     }
 
+    @Override
+    public R videoGetBysetId(Integer id) {
+        UserUploadVideoVo vo = new UserUploadVideoVo();
+        VideosSet video = getById(id);
+        vo.setId(video.getId().toString());
+        vo.setTitle(video.getTitle());
+        vo.setImage(video.getImage());
+        vo.setUsername(video.getCreateName());
+        Long statesNum = video.getStates();
+        int num = Math.toIntExact(statesNum);
+        String states = "";
+        switch (num) {
+            case 1:
+                states = "更新中";
+                break;
+            case 2:
+                states = "完结";
+                break;
+            case -1:
+                states = "停更";
+                break;
+            default:
+                states = "未播放";
+        }
+        vo.setStatus(states);
+        vo.setFirstTime(video.getFirstTime());
+        vo.setDescribe(video.getIntro());
+        //todo 缺状态
 
+        //视频信息
+        QueryWrapper<Video> wrapper = new QueryWrapper<>();
+        wrapper.eq("vides_set_id", id);
+        List<Video> item = videoService.list(wrapper);
+        vo.setVideos(item);
+
+        return R.ok().data("data", vo);
+    }
 
 
 }

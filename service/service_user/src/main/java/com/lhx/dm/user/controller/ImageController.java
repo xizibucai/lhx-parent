@@ -3,13 +3,12 @@ package com.lhx.dm.user.controller;
 
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.Image;
-import com.lhx.dm.user.entity.query.ImageQuery;
+import com.lhx.dm.user.query.ImageQuery;
 import com.lhx.dm.user.service.ImageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

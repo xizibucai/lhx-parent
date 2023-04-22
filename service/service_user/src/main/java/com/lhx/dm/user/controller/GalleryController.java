@@ -3,7 +3,7 @@ package com.lhx.dm.user.controller;
 
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.Gallery;
-import com.lhx.dm.user.entity.vo.GalleryVo;
+import com.lhx.dm.user.vo.GalleryVo;
 import com.lhx.dm.user.service.GalleryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

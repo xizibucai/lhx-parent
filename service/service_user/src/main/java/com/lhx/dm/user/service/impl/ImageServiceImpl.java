@@ -4,9 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.db.result.R;
 
-import com.lhx.dm.user.entity.Gallery;
 import com.lhx.dm.user.entity.Image;
-import com.lhx.dm.user.entity.query.ImageQuery;
+import com.lhx.dm.user.query.ImageQuery;
 import com.lhx.dm.user.mapper.ImageMapper;
 import com.lhx.dm.user.oss.service.ImageOssService;
 import com.lhx.dm.user.service.ImageService;
@@ -14,7 +13,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

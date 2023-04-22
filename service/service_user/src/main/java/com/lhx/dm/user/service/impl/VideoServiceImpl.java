@@ -3,20 +3,16 @@ package com.lhx.dm.user.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.db.result.R;
-import com.lhx.dm.user.entity.User;
 import com.lhx.dm.user.entity.Video;
-import com.lhx.dm.user.entity.query.VideoQuery;
-import com.lhx.dm.user.entity.vo.VideoBaseVo;
-import com.lhx.dm.user.entity.vo.video.ResourceVo;
+import com.lhx.dm.user.query.VideoQuery;
+import com.lhx.dm.user.vo.VideoBaseVo;
+import com.lhx.dm.user.vo.video.ResourceVo;
 import com.lhx.dm.user.mapper.VideoMapper;
-import com.lhx.dm.user.service.UserService;
 import com.lhx.dm.user.service.VideoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**

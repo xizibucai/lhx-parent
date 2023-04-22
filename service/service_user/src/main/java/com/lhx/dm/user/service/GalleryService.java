@@ -3,7 +3,7 @@ package com.lhx.dm.user.service;
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.Gallery;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhx.dm.user.entity.vo.GalleryVo;
+import com.lhx.dm.user.vo.GalleryVo;
 
 import javax.servlet.http.HttpSession;
 

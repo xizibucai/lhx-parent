@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhx.dm.user.entity.vo.UserFromVo;
+import com.lhx.dm.user.vo.UserFromVo;
 
 /**
  * <p>
@@ -31,5 +31,5 @@ public interface UserService extends IService<User> {
     //根据条件获取所有用户--分页
     R getAllUserForSearch(Long pageNo, Long pageSize, UserFromVo userFromVo);
 
-    R userGetGallery(Integer id);
+    R userGetGallery(String id);
 }

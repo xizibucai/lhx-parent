@@ -7,7 +7,7 @@ import com.lhx.dm.user.entity.Gallery;
 import com.lhx.dm.user.entity.Image;
 import com.lhx.dm.user.entity.User;
 import com.lhx.dm.user.entity.VideosSet;
-import com.lhx.dm.user.entity.vo.UserFromVo;
+import com.lhx.dm.user.vo.UserFromVo;
 import com.lhx.dm.user.mapper.UserMapper;
 import com.lhx.dm.user.service.GalleryService;
 import com.lhx.dm.user.service.ImageService;
@@ -113,15 +113,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public R userGetGallery(Integer id) {
+    public R userGetGallery(String id) {
+        Integer integer = new Integer(id);
         QueryWrapper<Gallery> galleryWrapper = new QueryWrapper<>();
-        galleryWrapper.eq("user_id", id);
+        galleryWrapper.eq("user_id", integer);
         List<Gallery> galleries = galleryService.list(galleryWrapper);
         QueryWrapper<Image> imageWrapper = new QueryWrapper<>();
-        imageWrapper.eq("create_by", id);
+        imageWrapper.eq("create_by", integer);
         List<Image> images = imageService.list(imageWrapper);
         QueryWrapper<VideosSet> videosSetWrapper = new QueryWrapper<>();
-        videosSetWrapper.eq("create_by",id);
+        videosSetWrapper.eq("create_by",integer);
         List<VideosSet> videosSets = videosSetService.list(videosSetWrapper);
         return R.ok().data("galleries", galleries).data("images",images).data("videosSets",videosSets);
     }

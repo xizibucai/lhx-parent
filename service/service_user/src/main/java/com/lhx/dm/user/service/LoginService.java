@@ -12,5 +12,8 @@ import javax.servlet.http.HttpSession;
  * @version 1.0
  */
 public interface LoginService extends IService<Login> {
-    R login(Login login, HttpSession session);
+    String login(Login login);
+
+    R getLoginInfo(String memberId);
+    // R login(Login login, HttpSession session);
 }

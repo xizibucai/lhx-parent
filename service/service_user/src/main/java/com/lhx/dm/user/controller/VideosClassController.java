@@ -3,14 +3,13 @@ package com.lhx.dm.user.controller;
 
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.VideosClass;
-import com.lhx.dm.user.entity.query.VideoClassQuery;
+import com.lhx.dm.user.query.VideoClassQuery;
 import com.lhx.dm.user.service.VideosClassService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 /**

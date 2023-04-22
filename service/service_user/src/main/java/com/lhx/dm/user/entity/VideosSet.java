@@ -117,4 +117,6 @@ public class VideosSet implements Serializable {
     @TableField("other_title")
     private String otherTitle;
 
+    @TableField("intro")
+    private String intro;
 }

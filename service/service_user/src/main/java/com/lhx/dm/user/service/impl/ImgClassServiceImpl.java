@@ -3,15 +3,11 @@ package com.lhx.dm.user.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.db.result.R;
-import com.lhx.dm.user.entity.Image;
 import com.lhx.dm.user.entity.ImgClass;
-import com.lhx.dm.user.entity.User;
-import com.lhx.dm.user.entity.vo.ImageClassVo;
-import com.lhx.dm.user.entity.vo.UserFromVo;
+import com.lhx.dm.user.vo.ImageClassVo;
 import com.lhx.dm.user.mapper.ImgClassMapper;
 import com.lhx.dm.user.service.ImgClassService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

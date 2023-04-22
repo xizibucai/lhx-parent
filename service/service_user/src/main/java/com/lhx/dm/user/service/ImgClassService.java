@@ -3,8 +3,7 @@ package com.lhx.dm.user.service;
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.ImgClass;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhx.dm.user.entity.vo.ImageClassVo;
-import com.lhx.dm.user.entity.vo.UserFromVo;
+import com.lhx.dm.user.vo.ImageClassVo;
 
 /**
  * <p>

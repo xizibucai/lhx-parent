@@ -3,8 +3,8 @@ package com.lhx.dm.user.service;
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.VideosSet;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhx.dm.user.entity.query.VideoSetFrontQuery;
-import com.lhx.dm.user.entity.query.VideoSumQuery;
+import com.lhx.dm.user.query.VideoSetFrontQuery;
+import com.lhx.dm.user.query.VideoSumQuery;
 
 /**
  * <p>
@@ -37,4 +37,5 @@ public interface VideosSetService extends IService<VideosSet> {
     R videoSetGetFrontList(Long pageNo, Long pageSize, VideoSetFrontQuery videoSetFrontQuery);
 
 
+    R videoGetBysetId(Integer id);
 }

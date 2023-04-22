@@ -3,8 +3,7 @@ package com.lhx.dm.user.controller;
 
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.ImgClass;
-import com.lhx.dm.user.entity.vo.ImageClassVo;
-import com.lhx.dm.user.entity.vo.UserFromVo;
+import com.lhx.dm.user.vo.ImageClassVo;
 import com.lhx.dm.user.service.ImgClassService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

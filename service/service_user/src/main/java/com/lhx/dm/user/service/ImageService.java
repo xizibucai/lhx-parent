@@ -3,7 +3,7 @@ package com.lhx.dm.user.service;
 import com.lhx.db.result.R;
 import com.lhx.dm.user.entity.Image;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhx.dm.user.entity.query.ImageQuery;
+import com.lhx.dm.user.query.ImageQuery;
 
 import java.util.List;
 
