@@ -15,22 +15,41 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author lhx
- * @since 2023-04-18
+ * @since 2023-04-25
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Friend implements Serializable {
+public class Comments implements Serializable {
 
     private static final long serialVersionUID=1L;
 
+    /**
+     * 主键
+     */
       @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
-    private Long uid;
+    /**
+     * 评论内容
+     */
+    private String content;
 
-    private Long fid;
-
+    /**
+     * 逻辑删除 1（true）已删除， 0（false）未删除
+     */
     @TableLogic
     private Boolean isDeleted;
+
+    private String from;
+
+    private String to;
+
+    /**
+     * 用户id
+     */
+    private Integer uid;
+    private Integer vid;
+
+
 }

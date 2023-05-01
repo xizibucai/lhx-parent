@@ -6,6 +6,8 @@ import com.lhx.dm.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhx.dm.user.vo.UserFromVo;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  *  服务类
@@ -32,4 +34,6 @@ public interface UserService extends IService<User> {
     R getAllUserForSearch(Long pageNo, Long pageSize, UserFromVo userFromVo);
 
     R userGetGallery(String id);
+
+
 }

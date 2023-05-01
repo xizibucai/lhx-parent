@@ -27,6 +27,6 @@ public class DmApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        webSocketServer.run();
+        // webSocketServer.run();
     }
 }

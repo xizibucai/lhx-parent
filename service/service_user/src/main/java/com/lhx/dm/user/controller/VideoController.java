@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  *  前端控制器
@@ -49,6 +51,11 @@ public class VideoController {
     @GetMapping("videoFrontGetById/{id}")
     public R videoFrontGetById(@PathVariable Integer id){
         return videoService.videoFrontGetById(id);
+    }
+
+    @GetMapping("getVideoInfo/{id}")
+    public R getVideoInfo(@PathVariable Integer id, HttpServletRequest request){
+        return videoService.getVideoInfo(id,request);
     }
 
 

@@ -1,8 +1,7 @@
-package com.lhx.dm.user.vo.MessageVo;
+package com.lhx.dm.user.vo.Comments;
 
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,13 +9,14 @@ import java.util.Date;
  * @version 1.0
  */
 @Data
-public class FriendListVo implements Serializable {
-
-    private String id;
+public class Comments_reply {
+    private String rid;
     private String uid;
     private Date created_at;
+    private String content;
     private String name;
     private String avatar;
-    private String status;
-    private String sign;
+    private String reply_uid;
+    private String reply_name;
+
 }

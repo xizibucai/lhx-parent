@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Data
 public class UserUploadingVo {
-    private List<VideosSet> videosSets = new ArrayList<>();
+    private List<UPVideoSetVo> videosSets = new ArrayList<>();
     private List<UPImageListVo> images = new ArrayList<>();
     private List<UPGalleryVo> galleries = new ArrayList<>();
 }

@@ -17,4 +17,8 @@ public interface VideosCollectionService extends IService<VideosCollection> {
     R getVideoSetCollection(String id);
 
     R delVideoCollection(Integer id, String userID);
+
+    Boolean getVideoStatus(String id, String userID);
+
+    R addVideoCollection(Integer id, String userID);
 }

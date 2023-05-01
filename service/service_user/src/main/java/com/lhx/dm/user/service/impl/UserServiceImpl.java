@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -126,6 +127,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         List<VideosSet> videosSets = videosSetService.list(videosSetWrapper);
         return R.ok().data("galleries", galleries).data("images",images).data("videosSets",videosSets);
     }
+
+
 
 
 }

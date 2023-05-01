@@ -53,6 +53,12 @@ public class VideosCollectionController {
         return service.delVideoCollection(id,userID);
     }
 
+    @ApiOperation("添加收藏")
+    @PostMapping("addVideoCollection/{id}")
+    public R addVideoCollection(@PathVariable Integer id,HttpServletRequest request){
+        String userID = JwtUtils.getMemberIdByJwtToken(request);
+        return service.addVideoCollection(id,userID);
+    }
 
 }
 

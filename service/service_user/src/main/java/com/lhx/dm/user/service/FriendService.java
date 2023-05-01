@@ -20,4 +20,15 @@ public interface FriendService extends IService<Friend> {
      * @param request*/
     R getFriendList(HttpServletRequest request);
 
+    R getFollowing(HttpServletRequest request, Integer id);
+
+    R getFollowers(HttpServletRequest request, Long page, Long pageSize, Integer id);
+
+    R followCount(String id);
+
+    R followCancel(Integer id, HttpServletRequest request);
+
+    R followStatus(Integer id, HttpServletRequest request);
+
+    R follow(Long id, HttpServletRequest request);
 }

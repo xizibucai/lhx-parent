@@ -78,24 +78,12 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @ApiOperation("获取用户上传的")
+
+
+    @ApiOperation("获取用户上传的(YCX)")
     @GetMapping("userGetList/{id}")
     public R userGetGallery(@PathVariable String id) {
         return userService.userGetGallery(id);
-    }
-
-    @GetMapping("danmu")
-    public R danmu() {
-        HashMap<String, Object> map = new HashMap<>();
-        DanMuVo vo = new DanMuVo();
-        vo.setColor("#fff");
-        // vo.setContent("test");
-        vo.setText("戏子不才");
-        vo.setTime("2");
-        vo.setType(0);
-        List<DanMuVo> danmaku = new ArrayList<>();
-        danmaku.add(vo);
-        return R.ok().data("danmaku", danmaku);
     }
 }
 

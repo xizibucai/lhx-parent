@@ -19,4 +19,6 @@ public class ResourceVo {
     private String res720;
     private String res1080;
     private String original;//原始分辨率视频链接
+    private Integer duration;
+    private Integer review;
 }

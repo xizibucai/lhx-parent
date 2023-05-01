@@ -1,7 +1,8 @@
 package com.lhx.dm.user.controller.uploading;
 
 import com.lhx.db.result.R;
-import com.lhx.dm.user.service.UserService;
+import com.lhx.dm.user.service.UpLoadingService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserUploadingGet {
     @Autowired
-    private UserService userService;
+    private UpLoadingService UpLoadingService;
     @ApiOperation("获取用户上传的")
     @GetMapping("userGetList/{id}")
     public R userGetGallery(@PathVariable String id) {
-        return userService.userGetGallery(id);
+        return UpLoadingService.userGetGallery(id);
     }
 
 }

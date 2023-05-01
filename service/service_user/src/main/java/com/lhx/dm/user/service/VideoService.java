@@ -5,6 +5,8 @@ import com.lhx.dm.user.entity.Video;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhx.dm.user.query.VideoQuery;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  *  服务类
@@ -22,4 +24,6 @@ public interface VideoService extends IService<Video> {
     R videoLittle();
 
     R videoFrontGetById(Integer id);
+
+    R getVideoInfo(Integer id, HttpServletRequest request);
 }

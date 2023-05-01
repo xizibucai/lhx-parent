@@ -1,28 +1,33 @@
 package com.lhx.dm.user.controller;
 
 import com.lhx.db.result.R;
+import com.lhx.dm.user.query.DanMuQuery;
+import com.lhx.dm.user.service.DanmuService;
+import com.lhx.dm.user.vo.DanMuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author hc
  * @version 1.0
  */
-@Api(tags = "dm")
+@Api(tags = "弹幕接口")
 @Configuration
 @RestController
-@RequestMapping("api/v1/video")
+@RequestMapping("user/vi/video")
 public class DanMuController {
+    @Autowired
+    private DanmuService service;
 
-    @ApiOperation("aaa")
+    @ApiOperation("获取弹幕")
     @GetMapping("get/{id}")
     public R videoget(@PathVariable Integer id){
 
@@ -54,11 +59,20 @@ public class DanMuController {
         user.put("birthday","0001-01-01T00:00:00Z");
         user.put("gender",0);
         user.put("role",0);
-      video.put("author",user);
-
-
-
+        video.put("author",user);
         return R.ok().data("map",map).data("video",video);
     }
 
+    @GetMapping("danmu/{vid}")
+    public R getdanmu(@PathVariable Integer vid, HttpServletRequest request) {
+        return  service.getdanmu(vid,request);
+    }
+
+    @PostMapping("danmuAadd")
+    @ApiOperation("发送弹幕")
+    public R danmuAadd(HttpServletRequest request, @RequestBody DanMuQuery danMuQuery) {
+
+        return service.danmuAadd(request,danMuQuery);
+
+    }
 }

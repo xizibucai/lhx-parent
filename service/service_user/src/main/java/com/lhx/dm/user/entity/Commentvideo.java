@@ -1,8 +1,11 @@
 package com.lhx.dm.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
@@ -15,22 +18,39 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author lhx
- * @since 2023-04-18
+ * @since 2023-05-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Friend implements Serializable {
+public class Commentvideo implements Serializable {
 
     private static final long serialVersionUID=1L;
 
       @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
-    private Long uid;
+    private Date createdAt;
 
-    private Long fid;
+    private Date updatedAt;
+
+    private Date deletedAt;
+
+    private Integer vid;
+
+    private String content;
+
+    private Integer uid;
+
+    private Integer parentId;
+
+    private String name;
+    private String avatar;
 
     @TableLogic
+    @TableField("is_deleted")
     private Boolean isDeleted;
+
+
+
 }

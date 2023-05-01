@@ -53,4 +53,27 @@ public class VideosCollectionServiceImpl extends ServiceImpl<VideosCollectionMap
         boolean remove = remove(wrapper);
         return R.ok();
     }
+
+    @Override
+    public Boolean getVideoStatus(String id, String userID) {
+        QueryWrapper<VideosCollection> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id",userID);
+        wrapper.eq("videos_id",id);
+        VideosCollection one = getOne(wrapper);
+        if (one!=null) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public R addVideoCollection(Integer id, String userID) {
+        QueryWrapper<VideosCollection> wrapper = new QueryWrapper<>();
+        VideosCollection collection = new VideosCollection();
+        collection.setIsDeleted(false);
+        collection.setUserId(Integer.valueOf(userID));
+        collection.setVideosId(id);
+        boolean save = save(collection);
+        return save?R.ok():R.error();
+    }
 }

@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Data
 public class UPImageListVo implements Serializable {
-    private String id;
+    private Integer id;
     private String url;
     private String name;
     private String description;
